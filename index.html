@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles/style.css" type="text/css" />
+    <link rel="subresource" href="scripts/script.js" />
+    <script src="scripts/index.js" defer></script>
+    <script>
+        var scripts = [
+            'scripts/script.js'
+        ];
+
+        var src;
+        var script;
+        var pendingScripts = [];
+        var firstScript = document.scripts[0];
+
+        function stateChange() {
+            var pendingScript;
+
+            while (pendingScripts[0] && pendingScripts[0].readyState == "loaded") {
+                pendingScript = pendingScripts.shift();
+                pendingScripts.onreadystatechange = null;
+                firstScript.parentNode.insertBefore(pendingScript, firstScript);
+            }
+
+            while (src = scripts.shift()) {
+                if ('async' in firstScript) {
+                    script = document.createElement('script');
+                    script.async = false;
+                    script.src = src;
+                    document.head.appendChild(script);
+                }
+                else if (firstScript.readyState) {
+                    script.document.createElement('script');
+                    pendingScripts.push(script);
+                    script.onreadystatechange = stateChange;
+                    script.src = src;
+                }
+                else {
+                    document.write('<script src="${src}" defer></'+'script>');
+                }
+            }
+        }
+
+        stateChange();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

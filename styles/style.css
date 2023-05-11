@@ -1,0 +1,30 @@
+@import url(font.css);
+
+:root {
+  --red: 255;
+  --green: 255;
+  --blue: 255;
+
+  --threshold: 0.5;
+  --border-threshold: 0.8;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+    box-sizing: content-box;
+
+    background: rgb(var(--red), var(--green), var(--blue));
+
+    --r: calc(var(--red) * 0.299);
+    --g: calc(var(--green) * 0.587);
+    --b: calc(var(--blue) * 0.114);
+    --sum: calc(var(--r) + var(--g) + var(--b));
+
+    --perceived-lightness: calc(var(--sum) / 255);
+
+    color: hsl(0, 0%, calc((var(--perceived-lightness) - var(--threshold)) * -10000000%));
+
+    font: 1.2rem roboto;
+}
