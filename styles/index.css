@@ -1,0 +1,41 @@
+.container {
+    display: grid;
+    grid-template: auto / 300px auto;
+}
+
+.sidebar {
+    --red: 25;
+    --green: 146;
+    --blue: 212;
+
+    display: grid;
+    align-content: start;
+    justify-content: center;
+    gap: 30px;
+
+    padding: 20px 0 0 0;
+}
+
+.sidebar div > div {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: auto 1fr;
+    gap: 20px 30px;
+}
+
+.sidebar .logo svg {
+    width: 2rem;
+    height: auto;
+}
+
+.sidebar .logo p {
+    font-size: 1.4rem;
+}
+
+.sidebar svg {
+    justify-self: center;
+}
+
+.sidebar svg + p {
+    font-weight: bold;
+}
