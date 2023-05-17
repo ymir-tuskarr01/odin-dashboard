@@ -13,7 +13,7 @@
     padding: 0;
     margin: 0;
     scroll-behavior: smooth;
-    box-sizing: content-box;
+    box-sizing: border-box;
 
     background: rgb(var(--red), var(--green), var(--blue));
 
@@ -25,11 +25,36 @@
     --perceived-lightness: calc(var(--sum) / 255);
 
     color: hsl(0, 0%, calc((var(--perceived-lightness) - var(--threshold)) * -10000000%));
-
-    font: 1.2rem roboto;
 }
 
 svg {
-  width: 1.2rem;
+  width: 1.5rem;
   height: auto;
+}
+
+input,
+button {
+  width: 100%;
+  height: auto;
+  border: none;
+  border-radius: 15px;
+  padding: 5px 15px;
+}
+
+input {
+  --red: 226;
+  --green: 232;
+  --blue: 240;
+}
+
+button {
+  --red: 25;
+  --green: 146;
+  --blue: 212;
+}
+
+input:focus,
+button:focus {
+  appearance: none;
+  box-shadow: inset 1px 1px 3px #ccc;
 }
