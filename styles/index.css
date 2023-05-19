@@ -1,6 +1,6 @@
 .container {
     display: grid;
-    grid-template: auto / 1fr 4fr;
+    grid-template: auto / 300px auto;
 }
 
 .sidebar {
@@ -38,7 +38,7 @@
 }
 
 .sidebar svg + p,
-.user_name > p,
+.content_view .nav .user_name > p,
 .user_greeting > p,
 .user_name,
 .user_name_handle {
@@ -112,7 +112,7 @@
 }
 
 .content_view .nav .nav_down > div {
-    width: auto;
+    width: min(400px, 70%);
 }
 
 .content_view .nav .nav_down .user_greeting_field {
@@ -172,7 +172,7 @@
 .content_view .content .content_list {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-auto-rows: max-content;
+    grid-template-rows: 30px auto;
     gap: 20px;
 }
 
@@ -246,17 +246,19 @@
 /* content - newsletter */
 .content_view .newsletter {
     display: grid;
-    grid-template-rows: 1fr 1fr;
     gap: 30px;
 }
 
-.content_view .newsletter .announcements {
+.content_view .newsletter .announcements,
+.content_view .newsletter .trending {
     display: grid;
     grid-auto-flow: row;
+    grid-auto-rows: 30px auto;
     gap: 20px;
 }
 
-.content_view .newsletter .announcements .announcement_list {
+.content_view .newsletter .announcements .announcement_list,
+.content_view .newsletter .trending .trending_user {
     --red: 254;
     --green: 254;
     --blue: 254;
@@ -293,13 +295,44 @@
 }
 
 
-@media screen and (max-width:800px){
+.content_view .newsletter .announcements {
+    display: grid;
+    grid-auto-flow: row;
+    gap: 20px;
+}
+
+.content_view .newsletter .trending .trending_user {
+    gap: 20px;
+    padding: 30px;
+}
+
+.content_view .newsletter .trending .trending_user > div {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 20px;
+}
+
+.content_view .newsletter .trending .trending_user > div p {
+    font-size: 0.7rem;
+}
+
+.content_view .newsletter .trending .trending_user .user_name_handle > p {
+    font-weight: 500;
+}
+
+.content_view .newsletter .trending .trending_user .user_image svg {
+    width: 2.5rem;
+    height: auto;
+}
+
+@media screen and (max-width:950px){
     .container {
-        grid-template: auto / 100px auto;
+        grid-template: auto / 80px auto;
     }
 
     .sidebar {
-        width: 100px;
+        width: 80px;
+        justify-content: center;
     }
 
     .sidebar p {
